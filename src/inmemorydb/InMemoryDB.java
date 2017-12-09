@@ -72,7 +72,6 @@ public class InMemoryDB {
 //			}
 			curTran.put("a", null);
 		} else {
-		//	countMap.put(map.get(key), countMap.get(map.get(key)) -1);
 			Set<String> temp = countMap.get(map.get(key));
 			temp.remove(key);
 			countMap.put(map.get(key), temp);
@@ -118,13 +117,6 @@ public class InMemoryDB {
 		if (!isCommitted()) {
 			stack.pop();			
 		}
-//		for (Map.Entry<String, Integer> entry : tempMap.entrySet()) {
-//			curTran.remove(entry.getKey());
-//		}
-//		for (Map.Entry<Integer, Integer> entry : tempCountMap.entrySet()) {
-//			tempCountMap.remove(entry.getKey());
-//		}	
-
 	}
 	
 	public void commit() {
@@ -133,7 +125,7 @@ public class InMemoryDB {
 		
 		while (!stack.isEmpty()) {
 			Map<String, Integer> curTran = stack.pop();
-			//update countMap
+			//Update countMap
 			for (Map.Entry<String, Integer> entry : curTran.entrySet()) {
 				if (!visited.contains(entry.getKey())) {
 					if (countMap.containsKey(entry.getValue())) {
