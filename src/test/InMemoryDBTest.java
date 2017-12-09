@@ -55,11 +55,11 @@ class InMemoryDBTest {
 		assertEquals(ia6, 40);
 		System.out.println(tc.count(40));
 		System.out.println(tc.count(30));
-
 		tc.rollback();
 		int ia7 = tc.get("a");
 		assertEquals(ia7, 40);
-	
+		System.out.println(tc.count(40));
+
 		tc.set("a", 50);
 		tc.set("b", 60);
 		tc.set("c", 60);
@@ -73,14 +73,13 @@ class InMemoryDBTest {
  		System.out.println(tc.count(50));
 		System.out.println(tc.count(60));
 		System.out.println(tc.count(40));
-//
-//
-//		tc.begin();
-//		tc.set("b", 1);
-//		tc.delete("a");
-//     	System.out.println(tc.count(60));
-		
-//		System.out.println(tc.checkTransaction());		
+
+		tc.begin();
+		tc.set("b", 1);
+		tc.delete("a");
+     	System.out.println(tc.count(60));
+	
+		System.out.println(tc.checkTransaction());		
 //
 //		Integer ia9 = tc.get("a");
 //		assertEquals(ia9, null);
