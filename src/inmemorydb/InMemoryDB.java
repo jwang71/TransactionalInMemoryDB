@@ -6,7 +6,7 @@ public class InMemoryDB {
 	private Map<Integer, Set<String>> countMap = new HashMap<>();
 
 	private Map<Integer, Set<String>> tempCountMap = new HashMap<>();
-	public Stack<Map<String, Integer>> stack = new Stack<>();
+	private Stack<Map<String, Integer>> stack = new Stack<>();
 	
 	public void set(String key, Integer value) {
 		if (checkTransaction()) {
